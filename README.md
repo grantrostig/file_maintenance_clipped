@@ -2,6 +2,8 @@ Menu_System - a TUI/CLI interactive moded menu system in C++.
 
 Immedidate mode command line demonstration program mdtui.com
 
+Requires Lib_tty also available on my account.
+
 This sub-project shows the use and testing of the code.
 
 This sample program implements the following menu structure:
