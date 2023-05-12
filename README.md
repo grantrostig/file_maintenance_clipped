@@ -1,5 +1,3 @@
-# file_maintenance_clipped
-
 Menu_System - a TUI/CLI interactive moded menu system in C++.
 
 Immedidate mode command line demonstration program mdtui.com
@@ -45,5 +43,4 @@ TODO: *Operations supported on specific listed menus:
 Skip to End of Input: Create, Update
 Back One Field:       Create, Update
 Back One Page:        List Entries, Search Entries 
-
 
