@@ -61,6 +61,8 @@ InteractionResult action_io_row_list_rows(State_menu & state, IO_table const & t
         case InteractionResultNav::main_menu :
             return InteractionResult { ir.hot_key, {}, {} , {InteractionResultErrorCat::failed, "User terminated action early."} , ir.navigation } ;
         case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
             throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
         }
         cout << i+1 << ":";
@@ -105,6 +107,8 @@ InteractionResult action_io_row_search_list_rows(State_menu & state, IO_table co
     case InteractionResultNav::main_menu :
         return InteractionResult { ir.hot_key, {}, {} , {InteractionResultErrorCat::failed, "User terminated action early."} , ir.navigation } ;
     case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
         throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
     }
 
@@ -164,6 +168,8 @@ InteractionResult prompt_for_existing_pk( State_menu & state, IO_table & table, 
         case InteractionResultNav::retain_menu :
         case InteractionResultNav::main_menu :
         case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
             throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
         }
         // *** NOTE: for the below code to work, we cannot do a 'continue' statement above this line in the loop!
@@ -219,6 +225,8 @@ InteractionResult action_io_row_select(State_menu &state, IO_table &table) {
         case InteractionResultNav::main_menu :
             return InteractionResult { ir.hot_key, {}, {} , {InteractionResultErrorCat::failed, "User terminated action early."} , ir.navigation } ;
         case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
             throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
         }
     }
@@ -254,6 +262,8 @@ InteractionResult action_io_row_select(State_menu &state, IO_table &table) {
             case InteractionResultNav::main_menu :
                 return InteractionResult { ir.hot_key, {}, {} , {InteractionResultErrorCat::failed, "User terminated action early."} , ir.navigation } ;
             case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
                 throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
             }
             cout << '\n'+message << endl;
@@ -326,6 +336,8 @@ InteractionResult action_io_row_create(State_menu &state, IO_table &table) {
         case InteractionResultNav::prior_menu_discard_value :
         case InteractionResultNav::main_menu :
         case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
             throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
         }
         // *** NOTE: for the below code to work, we cannot do a 'continue' statement above this line in the loop!
@@ -420,6 +432,8 @@ InteractionResult action_io_row_update(State_menu &state, IO_table &table) {
             case InteractionResultNav::prior_menu_discard_value :
             case InteractionResultNav::main_menu :
             case InteractionResultNav::na :
+        case InteractionResultNav::no_result :  // todo: correct?
+        case InteractionResultNav::exit_all_menu :  // todo: correct?
                 throw std::logic_error( std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
             }
             // *** NOTE: for the below code to work, we cannot do a 'continue' statement above this line in the loop!

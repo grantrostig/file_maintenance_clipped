@@ -195,9 +195,13 @@ InteractionResultNav find_interaction_result_nav( Lib_tty::Hot_key const & hot_k
                     [&hot_key, cat] (FieldNavInteractionRelation r) {
                          return (r.category == cat && r.field_nav == hot_key.f_completion_nav );
                     });
-    if ( v == fieldNavigationInteractionMap.mappings.end() )
-        //throw std::logic_error( "Missing entry in FNIMap."+std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
+    if ( v == fieldNavigationInteractionMap.mappings.end() ) {
+        //throw std::logic_error( "Missing entry in FNIMap."+std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.  Is there a new way to do this in C++23?
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wunused-value"  // todo?: is this the best way to do this, find other occurences in code to fix?
         assert(( "Missing entry in FNIMap.",false));
+        #pragma GCC diagnostic pop
+    }
     else
         return v->interaction_nav;
 }
@@ -408,6 +412,7 @@ bool process_field_completion_nav( State_menu						state,
     //case Lib_tty::FieldCompletionNav::help:
             //throw std::logic_error( "specialize_dialog_field_completion_nav():Bad FieldCompletion_Nav."+std::to_string(__LINE__)+":"+__FUNCTION__); // todo: complete this: code above case's.
     case Lib_tty::FieldCompletionNav::na: 	// don't set-up the gotten_field_data, further processing is required by other functions
+    case Lib_tty::FieldCompletionNav::no_result: 	// todo: is this correct?
         skip_additional_checks = false;
         // don't put assert false here!!  this is legitimate, we just got a regular char.
         break;
@@ -996,6 +1001,8 @@ bool is_store_value_intent( InteractionResultNav irn ) {
     case InteractionResultNav::next_row :
     case InteractionResultNav::prior_row :
     case InteractionResultNav::na :
+    case InteractionResultNav::no_result: 	// todo: is this correct?
+    case InteractionResultNav::exit_all_menu: 	// todo: is this correct?
         cerr << static_cast<int>(irn) << endl; // crude debugging info.
         assert(false);  // todo: finish this:
     }

@@ -147,6 +147,7 @@ InteractionResult const process_menu( State_menu & state, 		// needed for menu a
         case InteractionResultNav::first_row:
         case InteractionResultNav::last_row:
         case InteractionResultNav::na:
+        case InteractionResultNav::no_result :  // todo: correct?
             // TODO assert(( "Logic error: process_menu: invalid InteractionResultNav after doing menu selection.", false));
             break;
         }

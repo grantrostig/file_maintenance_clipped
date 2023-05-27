@@ -64,7 +64,7 @@ struct Version {  // used for both software and file format version.
 };
 
 static Version version_application {};  // the program code
-static Version version_file {};			// the data written to file that the program reads
+static Version version_file {};			// the data written to file that the program reads needed for crypto !
 
 static_assert ( sizeof(Version) <=255 ,"Lenght of Version is stored in a char, but its length is too great." );
 

@@ -1,12 +1,9 @@
-#include "window_panel.h"
 #include <iostream>
 #include <cassert>
-//#include "lib_tty.h"
-#include "optional"
+#include <optional>
+#include "window_panel.h"
 #include "state_menu.h"
 #include "state_application.h"
-#include "menu_option.h"
-#include "menu_actions.h"
 #include "interaction_result.h"
 #include "action_dialog.h"
 
@@ -108,4 +105,5 @@ InteractionResult pagination(State_menu &state, const Panel_dimensions &proposed
     }
     else
         assert(false); // can't fit according to pagination_wrap_effect().
+    return ir;  // todo?: what is the logic above?  check it and document it. :) !
 }
